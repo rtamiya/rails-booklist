@@ -1,0 +1,13 @@
+<% @lists.each do |list| %>
+  <h2><%= list.name%></h2>
+  <p><%= list.description %></p>
+  <%= link_to "see details", list_path(list)%>
+<% end %>
+<div>
+  <%= form_with url: lists_path, method: :get do |f| %>
+    <%= f.text_field :query,
+                     class: "form-control",
+                     placeholder: "Type keywords"
+                     value: params[:query] %>
+  <% end %>
+</div>

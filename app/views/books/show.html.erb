@@ -1,0 +1,5 @@
+<% image_link =  @book.image_link || "https://unblast.com/wp-content/uploads/2018/11/Open-Book-Mockup.jpg"%>
+<%= image_tag image_link, width: 120%>
+<h1><%= @book.title %></h1>
+<h2><%= @book.author %></h2>
+<p><%= @book.description %></p>

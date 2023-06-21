@@ -1,0 +1,6 @@
+<h1><%= @list.name %></h1>
+<% @books.each do |book| %>
+  <h2><%= book.title %></h2>
+  <h3><%= book.author %></h3>
+  <%= link_to "see details", book_path(book.googlebooks_id) %>
+<% end %>
