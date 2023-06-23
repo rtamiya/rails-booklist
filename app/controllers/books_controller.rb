@@ -22,5 +22,7 @@ class BooksController < ApplicationController
     else
       @book = Book.find_by(googlebooks_id: params[:googlebooks_id])
     end
+
+    @list = List.new
   end
 end

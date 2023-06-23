@@ -7,3 +7,11 @@
 <% else %>
 <%= @book.description.html_safe  %>
 <% end %>
+
+<h3>create new list with this book<h3>
+<%= simple_form_for @list do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description, as: :text %>
+  <%= f.input :googlebooks_id, as: :hidden, input_html: { value: @book.googlebooks_id } %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

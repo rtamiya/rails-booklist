@@ -21,7 +21,8 @@ export default class extends Controller {
     const bookInfos = data.items // an array of hashes
     searchResults.innerHTML = ""
     bookInfos.forEach (bookInfo => {
-      searchResults.insertAdjacentHTML("afterbegin", `<h2><a href="books/${bookInfo.id}">${bookInfo.volumeInfo.title}</a><h2>`);
+      searchResults.insertAdjacentHTML("beforeend", `<h2>${bookInfo.volumeInfo.title}</h2>`)
+      searchResults.insertAdjacentHTML("beforeend", `<p><a href="books/${bookInfo.id}">see details</a></p>`);
     })
   }
 }
