@@ -2,4 +2,8 @@
 <%= image_tag image_link, width: 120%>
 <h1><%= @book.title %></h1>
 <h2><%= @book.author %></h2>
-<p><%= @book.description %></p>
+<% if @book.description.nil? %>
+<%= "sorry, no description" %>
+<% else %>
+<%= @book.description.html_safe  %>
+<% end %>
