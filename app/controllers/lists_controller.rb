@@ -13,9 +13,11 @@ class ListsController < ApplicationController
     @list.user = current_user
     @book = Book.find_by(googlebooks_id: list_params[:googlebooks_id])
     if @list.save
-      @listbook = ListBook.create(book: @book, list: @list)
+      @list_book = ListBook.create(book: @book, list: @list)
       redirect_to list_path(@list)
     else
+      @list_book = ListBook.new
+      @lists = List.all
       render template: "books/show", status: :unprocessable_entity
     end
   end
@@ -23,6 +25,6 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require("list").permit(:name, :description, :googlebooks_id)
+    params.require(:list).permit(:name, :description, :googlebooks_id)
   end
 end

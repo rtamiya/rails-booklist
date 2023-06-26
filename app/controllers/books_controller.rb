@@ -24,5 +24,7 @@ class BooksController < ApplicationController
     end
 
     @list = List.new
+    @lists = List.all
+    @list_book = ListBook.new
   end
 end
