@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'json'
 
 class BooksController < ApplicationController
   def show
