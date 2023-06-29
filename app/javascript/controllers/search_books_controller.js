@@ -34,6 +34,6 @@ export default class extends Controller {
     const arr = document.querySelectorAll('input[name="checkedItems"]:checked')
     arr.forEach(node => checkedItems.push(node.value))
     document.querySelector("#googlebooks_ids").value = JSON.stringify(checkedItems)
-    console.log(document.querySelector("#googlebooks_ids"))
+    document.querySelector("#googlebooks_ids_for_list_book").value = JSON.stringify(checkedItems)
   }
 }

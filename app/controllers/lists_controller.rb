@@ -4,6 +4,7 @@ class ListsController < ApplicationController
   def index
     @lists = List.all
     @list = List.new
+    @list_book = ListBook.new
   end
 
   def show
@@ -65,15 +66,12 @@ class ListsController < ApplicationController
         render template: "lists/index", status: :unprocessable_entity
       end
     end
-    # book = Book.find_by(googlebooks_id: list_params[:googlebooks_id])
-    # if @list.save
-    #   @list_book = ListBook.createbook: book, list: @list)
-    #   redirect_to list_path(@list)
-    # else
-    #   @list_book = ListBook.new
-    #   @lists = List.all
-    #   render template: "books/show", status: :unprocessable_entity
-    # end
+  end
+
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+    redirect_to root_path
   end
 
   private

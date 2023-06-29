@@ -2,6 +2,10 @@
   <h2><%= list.name%></h2>
   <p><%= list.description %></p>
   <%= link_to "see details", list_path(list)%>
+  <%= link_to "Delete",
+  list_path(list),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>
 <% end %>
 
 <div data-controller="search-books">
@@ -17,9 +21,14 @@
   <form data-search-books-target="searchResult" name="searchResult">
   </form>
   <%= simple_form_for @list do |f| %>
-    <%= f.input :name%>
-    <%= f.input :description%>
+    <%= f.input :name %>
+    <%= f.input :description %>
     <%= hidden_field_tag :googlebooks_ids %>
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn btn-primary"%>
+  <% end %>
+  <%= simple_form_for @list_book do |f| %>
+    <%= f.input :list, collection: @lists, prompt: 'choose a list' %>
+    <%= hidden_field_tag :googlebooks_ids_for_list_book %>
+    <%= f.submit class: "btn btn-primary" %>
   <% end %>
 </div>

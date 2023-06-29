@@ -3,12 +3,19 @@
 <h1><%= @book.title %></h1>
 <h2><%= @book.author %></h2>
 <% if @book.description.nil? %>
-<%= "sorry, no description" %>
+  <%= "sorry, no description" %>
 <% else %>
-<%= @book.description.html_safe  %>
+  <%= @book.description.html_safe  %>
 <% end %>
 
-<h3 class='mt-3'>create new list with this book<h3>
+<h3>Lists with this book</h3>
+<% unless @book.lists.empty? %>
+  <% @book.lists.each do |list| %>
+    <%= link_to list.name, list_path(list) %>
+  <% end %>
+<% end %>
+
+<h3 class='mt-3'>create new list with this book</h3>
 <%= simple_form_for @list do |f| %>
   <%= f.input :name %>
   <%= f.input :description, as: :text %>
